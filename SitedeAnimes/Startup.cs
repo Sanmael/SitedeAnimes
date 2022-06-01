@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SitedeAnimes.Context;
+using SitedeAnimes.Repositories;
+using SitedeAnimes.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +29,8 @@ namespace SitedeAnimes
         {
             services.AddDbContext<AppDbContext>(options => 
              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddTransient<IAnimeRepository, AnimeRepository>();
+            services.AddTransient<IGeneroRepository, GeneroRepository>();
             services.AddControllersWithViews();
         }
 
