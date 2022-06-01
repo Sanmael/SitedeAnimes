@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SitedeAnimes.Repositories.Interfaces
 {
-    interface IAnimeRepository
+    public interface IAnimeRepository
     {
         IEnumerable<Anime> Animes { get; }
         IEnumerable<Anime> AnimesPreferidos { get; }
