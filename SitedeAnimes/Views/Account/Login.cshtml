@@ -1,0 +1,40 @@
+﻿@model LoginViewModel
+<section class="vh-100" style="background-color: white;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img src="https://i.pinimg.com/originals/20/68/f0/2068f0c35e914faf6efd6d7debfe546a.jpg"
+                                 alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                        </div>
+                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+                                <h4 class="text-center">Login</h4>
+                                <form asp-controller="Account" asp-action="Login" method="post" class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;" role="form">
+                                    <hr />
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <input type="hidden" asp-for="ReturnUrl" />
+                                    <div class="form-outline mb-4">
+                                        <label asp-for="UserName" class=" control-label"></label>
+                                        <input asp-for="UserName" class="form-control" />
+                                        <span asp-validation-for="UserName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label asp-for="Password" class=" control-label"></label>
+                                        <input asp-for="Password" class="form-control" />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                    <div class="text-center form-group">
+                                        <input type="submit" class="btn btn-success" value="Log in" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
