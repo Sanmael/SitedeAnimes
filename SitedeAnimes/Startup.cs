@@ -27,7 +27,7 @@ namespace SitedeAnimes
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options => 
+            services.AddDbContext<AppDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IAnimeRepository, AnimeRepository>();
             services.AddTransient<IGeneroRepository, GeneroRepository>();
@@ -57,8 +57,13 @@ namespace SitedeAnimes
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                              name: "generoFiltro",
+                              pattern: "Anime/{action}/{genero?}",
+                              defaults: new { controller = "Anime", action = "List" });
+
+                endpoints.MapControllerRoute(
+                        name: "default",
+                        pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
