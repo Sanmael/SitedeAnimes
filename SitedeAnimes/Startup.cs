@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using SitedeAnimes.Context;
 using SitedeAnimes.Repositories;
 using SitedeAnimes.Repositories.Interfaces;
+using SitedeAnimes.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,15 @@ namespace SitedeAnimes
         {
             services.AddDbContext<AppDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", politica =>
+                {
+                    politica.RequireRole("Admin");
+                });
+            });
+         
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
@@ -56,7 +65,7 @@ namespace SitedeAnimes
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeedUserRoleInitial seedUserRoleInitial)
         {
             if (env.IsDevelopment())
             {
@@ -72,6 +81,10 @@ namespace SitedeAnimes
             app.UseStaticFiles();
 
             app.UseRouting();
+            //cria perfil
+            seedUserRoleInitial.SeedRoles();
+            //cria usuario e atribui os perfis.
+            seedUserRoleInitial.SeedUsers(); 
             app.UseCors();
             app.UseSession();
             app.UseAuthentication();
@@ -84,7 +97,7 @@ namespace SitedeAnimes
                 {
                     endpoints.MapControllerRoute(
                       name: "areas",
-                      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                      pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}"
                     );
                 });
                 endpoints.MapControllerRoute(

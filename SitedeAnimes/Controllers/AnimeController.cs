@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SitedeAnimes.Models;
 using SitedeAnimes.Repositories.Interfaces;
 using SitedeAnimes.ViewModels;
@@ -16,6 +17,7 @@ namespace SitedeAnimes.Controllers
         {
             _animeRepository = animeRepository;
         }
+        [Authorize]
         public IActionResult List(string genero)
         {
             IEnumerable<Anime> animes;

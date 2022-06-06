@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SitedeAnimes.Models;
+using SitedeAnimes.Repositories.Interfaces;
+using SitedeAnimes.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,16 +13,22 @@ namespace SitedeAnimes.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IAnimeRepository _animeRepository;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IAnimeRepository animeRepository, ILogger<HomeController> logger)
         {
+            _animeRepository = animeRepository;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel
+            {
+                AnimesPreferidos = _animeRepository.AnimesPreferidos
+            };
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()
