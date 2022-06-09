@@ -60,7 +60,7 @@ namespace SitedeAnimes.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AnimeId,Nome,Descricao,ImagemUrl,IsAnimePreferido,Nota,SiteAssistirAnime,GeneroId")] Anime anime)
+        public async Task<IActionResult> Create([Bind("AnimeId,Nome,NomeDoDiretor,NumeroDeEpisodios,NumeroDeTemporadas,AnoDeLancamento,Descricao,ImagemUrl,ImagemUrlPagina,IsAnimePreferido,Nota,SiteAssistirAnime,GeneroId")] Anime anime)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace SitedeAnimes.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AnimeId,Nome,Descricao,ImagemUrl,IsAnimePreferido,Nota,SiteAssistirAnime,GeneroId")] Anime anime)
+        public async Task<IActionResult> Edit(int id, [Bind("AnimeId,Nome,NomeDoDiretor,NumeroDeEpisodios,NumeroDeTemporadas,AnoDeLancamento,Descricao,ImagemUrl,ImagemUrlPagina,IsAnimePreferido,Nota,SiteAssistirAnime,GeneroId")] Anime anime)
         {
             if (id != anime.AnimeId)
             {

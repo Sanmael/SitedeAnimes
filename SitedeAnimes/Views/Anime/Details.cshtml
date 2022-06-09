@@ -2,7 +2,7 @@
 
 <div class="card-group">
     <div class="card">
-        <img class="img-fluid" src="@Model.ImagemUrl" alt="">
+        <img class="img-fluid" src="@Model.ImagemUrlPagina" alt="">
         <div class="card-body">
             <h2 class="text-center">Nota: @Model.Nota</h2>
         </div>
@@ -12,11 +12,18 @@
             <h3 class="card-title text-center">@Model.Nome</h3>
             <h6 class="text-center">Descrição</h6>
             <p class="card text-white bg-secondary mb-3">@Model.Descricao</p>
+            <ul>
+                <li>Episodios: @Model.NumeroDeEpisodios</li>
+                <li>Temporadas: @Model.NumeroDeTemporadas</li>
+                <li>Diretor: @Model.NomeDoDiretor</li>
+                <li>Ano: @Model.AnoDeLancamento</li>
+            </ul>
             <p class="text-center">
                 <a asp-controller="Anime" asp-action="List" class="btn btn-outline-info">Lista</a>
             </p>
-            <h5>Link para assistir: <a href="@Model.SiteAssistirAnime" class="badge badge-pill badge-warning">Clique Aqui!</a></h5>
-
+            <div class="text-center">
+                <h5>Link para assistir: <a href="@Model.SiteAssistirAnime" class="badge badge-pill badge-warning">Clique Aqui!</a></h5>
+            </div>
         </div>
     </div>
 </div>

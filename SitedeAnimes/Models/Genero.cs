@@ -8,7 +8,6 @@ namespace SitedeAnimes.Models
 {
     public class Genero
     {
-        [Key]
         public int GeneroId { get; set; }
         [Required(ErrorMessage = "O Nome do genero deve ser informado!")]
         [Display(Name = "Nome do genero")]

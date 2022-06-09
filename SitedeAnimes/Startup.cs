@@ -30,7 +30,8 @@ namespace SitedeAnimes
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options =>
-             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version())));
+
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
             services.AddAuthorization(options =>
             {
