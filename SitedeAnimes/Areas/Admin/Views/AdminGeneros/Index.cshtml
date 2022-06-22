@@ -4,12 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Generos</h1>
+<h3 class="text-center">Generos</h3>
 
 <p>
     <a asp-action="Create" class="badge badge-success">Adicionar Genero</a>
 </p>
-<table class="table">
+<table class="table table-hover table-dark">
     <thead>
         <tr>
             <th>
@@ -18,7 +18,7 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="table-danger text-dark">
         @foreach (var item in Model)
         {
             <tr>

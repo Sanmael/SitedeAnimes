@@ -53,7 +53,6 @@ namespace SitedeAnimes
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = true;

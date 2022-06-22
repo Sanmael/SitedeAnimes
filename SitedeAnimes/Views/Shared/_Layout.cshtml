@@ -3,24 +3,26 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SamuelAnimes</title>
+    <title>@ViewData["Title"] SamuelAnimes</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow col-sm-3 com-md-3 col-lg 3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SamuelAnimes</a>
+                <nav class="navbar navbar-dark bg-dark">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="~/Imagens/logo3.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                        S.Animes
+                    </a>
+                </nav>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-around">
                     <ul class="navbar-nav flex-grow-1 d-flex align-items-center">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidade</a>
                         </li>
@@ -32,15 +34,15 @@
                         </li>
                         <li class="nav-item">
                             @if (User.IsInRole("Admin"))
-                    {
-                            <a class="nav-link text-light" asp-area="Admin" asp-controller="Admin" asp-action="Index">Admin </a>
-                    }
+                            {
+                                <a class="nav-link text-light" asp-area="Admin" asp-controller="Admin" asp-action="Index">Admin </a>
+                            }
                         </li>
                         <li class="nav-item">
                             @await Html.PartialAsync("_LoginPartial")
                         </li>
                     </ul>
-                    <form class="navbar-form navbar-right input-group" asp-controller="Anime" asp-action="Search" method="get">
+                    <form class="navbar-form navbar-right" asp-controller="Anime" asp-action="Search" method="get">
                         <input type="text" class="form-control rounded" placeholder="Procurar Anime" name="searchString" value="@ViewData["searchString"]">
                     </form>
                 </div>

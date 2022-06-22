@@ -9,8 +9,8 @@ using SitedeAnimes.Context;
 namespace SitedeAnimes.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220608114209_teste")]
-    partial class teste
+    [Migration("20220613023749_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

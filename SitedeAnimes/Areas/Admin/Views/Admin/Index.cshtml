@@ -1,12 +1,17 @@
 ﻿<br />
-<div class="text-center">
-        <img src="https://api.duniagames.co.id/api/content/upload/file/5869541921624616645.jpg" alt="Àrea de Administração" class="img-fluid max-width:100% height:auto" />
-</div>
 <div class="container">
-    <div class="text-center">
-        <p>
-            <h4>Esta é a área do Administrador</h4>
-        </p>
+    <div class="row">
+        <div id="coluna1" class="col-md-6 ">
+            <a asp-area="" asp-controller="Anime" asp-action="List"><img class="img-fluid" height="400" width="500" src="https://i.ibb.co/6YtkyhC/transferir.png" /></a>
+        </div>
+        <div id="coluna2" class="col-md-6 ">
+            <a asp-area="Admin" asp-controller="AdminAnimes" asp-action="Create"><img class="img-fluid" height="400" width="500" src="https://i.ibb.co/MfXrrq5/transferir-1.png" /></a>
+        </div>
     </div>
-    <a asp-area="" asp-controller="Home" asp-action="Index">Volta a Pagina Inicial</a>
+    <br><br>
+    <br><br>
+    <br><br>
+    <div id="coluna3" class="w-100 col-md-12 text-center">
+        <a asp-area="" asp-controller="Home" asp-action="Index"><h1 class="text-dark">Voltar Para o Inicio</h1></a>
+    </div>
 </div>

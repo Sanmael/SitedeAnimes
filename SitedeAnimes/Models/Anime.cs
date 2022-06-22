@@ -33,7 +33,7 @@ namespace SitedeAnimes.Models
         [Required(ErrorMessage = "O Link para ver o Anime deve ser informado!")]
         [Display(Name = "Site do Anime")]
         public string SiteAssistirAnime { get; set; }
-        [Display(Name = "Genero do Anime")]
+        [Display(Name = "Genero")]
         public int GeneroId { get; set; }
         public virtual Genero Genero { get; set; }
 

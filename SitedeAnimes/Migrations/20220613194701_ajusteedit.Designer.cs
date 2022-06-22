@@ -9,8 +9,8 @@ using SitedeAnimes.Context;
 namespace SitedeAnimes.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220608043537_initial")]
-    partial class initial
+    [Migration("20220613194701_ajusteedit")]
+    partial class ajusteedit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -217,6 +217,9 @@ namespace SitedeAnimes.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("AnoDeLancamento")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -237,7 +240,16 @@ namespace SitedeAnimes.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("NomeDoDiretor")
+                        .HasColumnType("longtext");
+
                     b.Property<int>("Nota")
+                        .HasColumnType("int");
+
+                    b.Property<double>("NumeroDeEpisodios")
+                        .HasColumnType("double");
+
+                    b.Property<int>("NumeroDeTemporadas")
                         .HasColumnType("int");
 
                     b.Property<string>("SiteAssistirAnime")

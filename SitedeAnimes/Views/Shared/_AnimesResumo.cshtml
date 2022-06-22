@@ -1,9 +1,9 @@
 ﻿@model Anime
 
-<div class="col-sm-3 col-md-3 col-lg-3">
-    <h4 class="text-center">@Model.Nome</h4>
+<div class="col-6 col-sm-4 col-md-3 col-lg-3  ">
     <div class="text-center ">
         <a asp-controller="Anime" asp-action="Details" asp-route-animeId="@Model.AnimeId"><h5 class="badge badge-success">Ver Detalhes</h5></a>
     </div>
     <p><img src="@Model.ImagemUrl" class="mx-auto img-thumbnail" style="width:250px" /></p>
+    <p class="text-center">@Model.Nome</p>
 </div>

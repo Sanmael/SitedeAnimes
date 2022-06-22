@@ -57,7 +57,7 @@ namespace SitedeAnimes.Services
             if (_userManager.FindByEmailAsync("admin@localhost").Result == null)
             {
                 IdentityUser user = new IdentityUser();
-                user.UserName = "admin@localhost";
+                user.UserName = "admin";
                 user.Email = "admin@localhost";
                 user.NormalizedEmail = "ADMIN@LOCALHOST";
                 user.NormalizedUserName = "ADMIN@LOCALHOST";
@@ -71,6 +71,8 @@ namespace SitedeAnimes.Services
                     _userManager.AddToRoleAsync(user, "Admin").Wait();
                 }
             }
+
         }
+
     }
 }

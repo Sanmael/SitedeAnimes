@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
+using ReflectionIT.Mvc.Paging;
 using SitedeAnimes.Context;
 using SitedeAnimes.Models;
 
@@ -22,13 +24,24 @@ namespace SitedeAnimes.Areas.Admin.Controllers
             _context = context;
         }
 
-        // GET: Admin/AdminAnimes
-        public async Task<IActionResult> Index()
+        //// GET: Admin/AdminAnimes
+        //public async Task<IActionResult> Index()
+        //{
+        //    var appDbContext = _context.Animes.Include(a => a.Genero);
+        //    return View(await appDbContext.ToListAsync());
+        //}
+        public async Task<IActionResult> Index(string filter, int pageindex = 1, string sort = "Nome")
         {
-            var appDbContext = _context.Animes.Include(a => a.Genero);
-            return View(await appDbContext.ToListAsync());
-        }
+            var resultado = _context.Animes.Include(a => a.Genero).AsQueryable();
+            if (!string.IsNullOrWhiteSpace(filter))
+            {
+                resultado = resultado.Where(p => p.Nome.Contains(filter));
+            }
+            var model = await PagingList.CreateAsync(resultado, 5, pageindex, sort, "Nome");
+            model.RouteValue = new RouteValueDictionary { { "filter", filter } };
+            return View(model);
 
+        }
         // GET: Admin/AdminAnimes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
